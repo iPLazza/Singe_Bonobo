@@ -1,0 +1,38 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+
+    <div class="container">
+        <div class="panel panel-info">
+            <div class="panel-heading">Ajouter un nouveau ami</div>
+            <div class="panel-body">
+                {{ form_start(form) }}
+                <table class="table table-striped">
+                    <tr>
+                        <td>{{ form_label(form.age) }}</td>
+                        <td>{{ form_widget(form.age) }}</td>
+                        <td>{{ form_errors(form.age) }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ form_label(form.race) }}</td>
+                        <td>{{ form_widget(form.race) }}</td>
+                        <td>{{ form_errors(form.race) }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ form_label(form.famille) }}</td>
+                        <td>{{ form_widget(form.famille) }}</td>
+                        <td>{{ form_errors(form.famille) }}</td>
+                    </tr>
+
+                    <tr>
+                        <td>{{ form_label(form.nourriture) }}</td>
+                        <td>{{ form_widget(form.nourriture) }}</td>
+                        <td>{{ form_errors(form.nourriture) }}</td>
+                    </tr>
+                </table>
+              {{ form_end(form) }}
+                <br>
+                <a href="{{ path("list") }}">Liste de tous les amis</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -46,7 +46,7 @@ class DefaultController extends Controller
     public function formUserAction(Request $request)
     {
         $user = new User();
-        $form = $this->get('form.factory')->create(new UserType(), $user);
+        $form = $this->createForm(UserType::class, $user);
         if ($form->handleRequest($request)->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
@@ -55,10 +55,9 @@ class DefaultController extends Controller
             $params = array(
                 'users' => $em->getRepository(User::class)->findAll()
             );
-            return $this->render('AppBundle:listUser.html.twig',$params);
+            return $this->render('AppBundle:Default:listUser.html.twig',$params);
         }
-
-
+        return array('form' => $form->createView());
     }
 
 
@@ -70,14 +69,13 @@ class DefaultController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $user = $em->getRepository(User::class)->find($id);
-        $form = $this->get('form.factory')->create(new UserType(), $user);
+        $form = $this->createForm(UserType::class, $user);
         if ($form->handleRequest($request)->isValid()) {
-            //$em->persist($user);
             $em->flush();
             $params = array(
                 'users' => $em->getRepository(User::class)->findAll()
             );
-            return $this->render('AppBundle:listUser.html.twig',$params);
+            return $this->render('AppBundle:Default:listUser.html.twig',$params);
         }
         return array('form' => $form->createView());
     }
@@ -101,7 +99,7 @@ class DefaultController extends Controller
         $params = array(
             'users' => $em->getRepository(User::class)->findAll()
         );
-        return $this->render('AppBundle:listUser.html.twig',$params);
+        return $this->render('AppBundle:Default:listUser.html.twig',$params);
     }
 
 

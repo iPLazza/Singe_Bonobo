@@ -6,7 +6,7 @@
             <div class="panel panel-info">
                 <div class="panel-heading">Liste des amis</div>
                 <div class="panel-body">
-
+                    <a href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
                     <table class="table table-striped">
                         <tr>
                             <th>ID</th><th>Age</th><th>Race</th><th>Famille</th><th>Nourriture</th><th colspan="2">Action</th>
@@ -23,7 +23,6 @@
                             </tr>
                         {% endfor %}
                     </table>
-                    <a href="{{ path("form") }}">Ajouter un nouveau ami</a>
                 </div>
 
             </div>
