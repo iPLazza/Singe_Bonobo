@@ -1,0 +1,33 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+
+    <div class="container">
+        <div class="row">
+            <div class="panel panel-info">
+                <div class="panel-heading">Liste des amis</div>
+                <div class="panel-body">
+
+                    <table class="table table-striped">
+                        <tr>
+                            <th>ID</th><th>Age</th><th>Race</th><th>Famille</th><th>Nourriture</th><th colspan="2">Action</th>
+                        </tr>
+                        {% for u in users %}
+                            <tr>
+                                <td>{{ u.id }}</td>
+                                <td>{{ u.age }}</td>
+                                <td>{{ u.race }}</td>
+                                <td>{{ u.famille }}</td>
+                                <td>{{ u.nourriture }}</td>
+                                <td><a href="{{ path('update',{'id': u.id}) }}">Modifier</a></td>
+                                <td><a href="{{ path('delete',{'id': u.id}) }}">Supprimer</a></td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                    <a href="{{ path("form") }}">Ajouter un nouveau ami</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
